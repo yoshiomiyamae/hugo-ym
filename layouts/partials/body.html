@@ -1,0 +1,48 @@
+<body>
+{{ partial "header.html" . }}
+<div class="row" id="content">{{ range ( where (.Paginator 10).Pages "Section" "blog" ) }}{{ partial "blog_summary.html" . }}{{ end }}</div>
+{{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+  <nav class="pagination text-center" role="navigation" aria-label="Pagination">
+    {{ if .Paginator.HasPrev }}
+      <li class="pagination-previous"><a href="{{ .Paginator.Prev.URL }}" aria-label="Previous page">Previous</a> <span class="show-for-sr"></span></li>
+    {{ else }}
+      <li class="pagination-previous disabled">Previous <span class="show-for-sr"></span></li>
+    {{ end }}
+    {{ range $i, $sequence := (seq .Paginator.TotalPages) }}
+      {{ if and ( gt $sequence 2 ) ( lt $sequence ( sub $.Paginator.TotalPages 1) )}}
+        {{ if eq $.Paginator.PageNumber $sequence  }}
+          {{ if gt $sequence 3}}
+            <li class="ellipsis" aria-hidden="true"></li>
+          {{ end }}
+          <li class="current"><a href="{{ $.Site.BaseURL }}page/{{ $sequence }}" aria-label="Page {{ $sequence }}">{{ $sequence }}</a></li>
+          {{ if lt $sequence ( sub $.Paginator.TotalPages 2) }}
+            <li class="ellipsis" aria-hidden="true"></li>
+          {{ end }}
+        {{ end }}
+      {{ else if eq $.Paginator.PageNumber $sequence  }}
+        {{ if eq $.Paginator.PageNumber ( sub $.Paginator.TotalPages 1 ) }}
+          <li class="ellipsis" aria-hidden="true"></li>
+        {{ end }}
+        <li class="current"><a href="{{ $.Site.BaseURL }}page/{{ $sequence }}" aria-label="Page {{ $sequence }}">{{ $sequence }}</a></li>
+        {{ if eq $.Paginator.PageNumber 2 }}
+          <li class="ellipsis" aria-hidden="true"></li>
+        {{ end }}
+      {{ else }}
+        {{ if and ( eq $sequence ( sub $.Paginator.TotalPages 1 )) ( gt $.Paginator.PageNumber ( sub $.Paginator.TotalPages 2 )) }}
+          <li class="ellipsis" aria-hidden="true"></li>
+        {{ end }}
+        <li><a href="{{ $.Site.BaseURL }}/page/{{ $sequence }}" aria-label="Page {{ $sequence }}">{{ $sequence }}</a></li>
+        {{ if and ( eq $sequence 2 ) ( lt $.Paginator.PageNumber 2 ) }}
+          <li class="ellipsis" aria-hidden="true"></li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+      <li class="pagination-next"><a href="{{ .Paginator.Next.URL }}" aria-label="Next page">Next <span class="show-for-sr"></span></a></li>
+    {{ else }}
+      <li class="pagination-next disabled">Next <span class="show-for-sr"></span></li>
+    {{ end }}
+  </nav>
+{{ end }}
+{{ partial "footer.html" . }}
+</body>

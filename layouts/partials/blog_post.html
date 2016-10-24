@@ -1,0 +1,6 @@
+<div class="blog-post">
+  <h3><a href="{{ .Permalink }}">{{ .Title }}</a> <small class="post_time">{{ .Date }}</small></h3>
+  <h6><small>Author: </small><a href="{{ .Params.author.homepage }}"><img src="https://www.gravatar.com/avatar/{{ md5 .Params.author.email }}?s=32&d=identicon" style="border-radius: 50%">{{ .Params.author.name }} </a></h4>
+  {{ .Content }}
+  {{ partial "social.html" .}}
+</div>

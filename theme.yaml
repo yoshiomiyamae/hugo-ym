@@ -1,0 +1,12 @@
+name: Hugo YM
+license: MIT
+licenselink: https://github.com/yoshiomiyamae/hugo-ym/blob/master/LICENSE.md
+description:
+homepage: https://github.com/yoshiomiyamae/hugo-ym/
+tags:
+features:
+min_version: 0.17
+
+author:
+  name: Yoshio Miyamae
+  homepage: http://yoshiomiyamae.github.io/

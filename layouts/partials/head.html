@@ -1,0 +1,19 @@
+<head>
+  <meta charset="utf-8">
+  {{ .Hugo.Generator }}
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <!-- Foundation6 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+  <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+  <!-- Font Awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <!-- Moment -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
+  <!-- Google -->
+  {{ template "_internal/google_analytics.html" . }}
+  <!-- Local -->
+  <script src="{{ .Site.BaseURL }}js/main.js"></script>
+  <link href="{{ .Site.BaseURL }}css/main.css" rel="stylesheet">
+  <title>{{ .Site.Title }}</title>
+</head>

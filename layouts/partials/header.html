@@ -1,0 +1,35 @@
+<header>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">{{ .Site.Author.name }} Blog</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <form id="cse-search-box" action="http://google.com/cse">
+        <input type="hidden" name="cx" value="003739119650977154197:tna_5iv1ymq" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <ul class="menu">
+          <li><input type="text" name="q" size="31" placeholder="Google (TM) Custom Search"/></li>
+          <li><button type="submit" class="button" name="sa">Search</button></li>
+        </ul>
+      </form>
+    </div>
+  </div>
+  <div class="callout large primary">
+    <div class="row column text-center">
+      <h1>{{ .Site.Title }}</h1>
+    </div>
+  </div>
+  <nav aria-label="You are here:" role="navigation">
+    <ul class="breadcrumbs">
+      <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+      {{ if eq .Section "blog" }}
+      <li class="disabled">{{ .Section }}</li>
+      <li><span class="show-for-sr">Current: </span> {{ .Title }}</li>
+      {{ else if .Section }}
+      <li><span class="show-for-sr">Current: </span> {{ .Section }}</li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>
